@@ -10,7 +10,7 @@ def get_last_runs(task_name, num_events):
     *[EventData[Data[@Name='TaskName']='\{task_name}']]
     '''
 
-    query = EventLog.Query("Microsoft-Windows-TaskScheduler/Operational",query_xml)
+    query = EventLog.Query("Microsoft-Windows-TaskScheduler/Operational",query_xml,"backward")
 
     x = 0
     for event in query:
