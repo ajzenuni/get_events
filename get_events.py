@@ -11,7 +11,7 @@ def get_last_runs(task_name, num_events):
     '''
 
     query = EventLog.Query("Microsoft-Windows-TaskScheduler/Operational",query_xml,"backward")
-
+    
     x = 0
     for event in query:
         if(x >= num_events):
@@ -23,6 +23,9 @@ def get_last_runs(task_name, num_events):
         print(system_time_datetime.strftime("%Y-%m-%d %H:%M:%S"))
         x += 1
 
+    if(x == 0):
+        print(f"No events found. Check the task scheduler that your task: {task_name} was scheduled.")
+        
 def main():
     # handle incorrect num of arguments
     if len(sys.argv) != 3:
