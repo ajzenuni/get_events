@@ -7,7 +7,7 @@ def get_last_runs(task_name, num_events):
     query_xml = f'''
     *[System[Provider[@Name='Microsoft-Windows-TaskScheduler'] and (Level=4) and (Task = 102)]]
     and
-    *[EventData[Data[@Name='TaskName']='\{task_name}']]
+    *[EventData[Data[@Name='TaskName']='{task_name}']]
     '''
 
     query = EventLog.Query("Microsoft-Windows-TaskScheduler/Operational",query_xml,"backward")
